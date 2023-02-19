@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <!-- header info and metadata -->
+    <head th:include='/main :: head(#{home.label}'>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title th:text="|${title} - #{project.name.label}|">Home</title>
+        <meta name="description" content=""/>
+        <meta name="author" content="Erland Green"/>
 
-</body>
+        <!-- phone compatibility -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="../../resources/img/favicon.ico" th:href="@{/resources/img/favicon.ico}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../../resources/img/apple-touch-icon-precomposed.png" th:href="@{/resources/img/apple-touch-icon-precomposed.png}" />
+
+        <!-- css files -->
+        <link rel="stylesheet" href="../../resources/css/bootstrap.no-icons.min.css" th:href="@{//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/font-awesome.min.css" th:href="@{//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/main.css" th:href="@{/resources/css/main.css}" />
+    </head>
+    <body>
+        <!-- navigation bar -->
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner" th:substituteby="/main :: navigation('home')">
+
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- welcome banner with variable -->
+                    <h1 th:text="#{welcome.label(${session.loggedUser})}">Welcome</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- javascript on the bottom of the page to load faster -->
+        <div th:include="main :: scripts">
+            <script src="../../resources/js/jquery-1.10.1.min.js" th:src="@{http://code.jquery.com/jquery-1.10.1.min.js}"></script>
+            <script src="../../resources/js/jquery-migrate-1.2.1.min.js" th:src="@{http://code.jquery.com/jquery-migrate-1.2.1.min.js}"></script>
+            <script src="../../resources/js/bootstrap.min.js" th:src="@{http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js}"></script>
+            <script src="../../resources/js/main.js" th:src="@{/resources/js/main.js}"></script>
+        </div>
+    </body>
 </html>
