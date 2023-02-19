@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:include="/main :: head(#{user.label})">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title th:text="|${title} - #{project.name.label}|">New Client</title>
+        <meta name="description" content=""/>
+        <meta name="author" content="Erland Green"/>
 
-</body>
+        <!-- phone compatibility -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="../../resources/img/favicon.ico" th:href="@{/resources/img/favicon.ico}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../../resources/img/apple-touch-icon-precomposed.png" th:href="@{/resources/img/apple-touch-icon-precomposed.png}" />
+
+        <!-- css files -->
+        <link rel="stylesheet" href="../../resources/css/bootstrap.no-icons.min.css" th:href="@{//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/font-awesome.min.css" th:href="@{//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/main.css" th:href="@{/resources/css/main.css}" />
+    </head>
+    <body>
+        <!-- navigation bar -->
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner" th:substituteby="/main :: navigation('client')">
+
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Add new product</h1>
+                    <!-- The form along with the fields -->
+                    <form action="#" class="form-horizontal well well-lg" th:action="@{/client/create}" th:object="${client}" method="post">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="Company" class="col-md-2 control-label"><span style="...">Company</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="company" name="company" th:field="*{company}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="First Name" class="col-md-2 control-label"><span style="...">First Name</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Last Name" class="col-md-2 control-label"><span style="...">Last Name</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="col-md-2 control-label"><span style="...">Address</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="address" name="address" th:field="*{address}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city" class="col-md-2 control-label"><span style="...">City</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="city" name="city" th:field="*{city}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="stateinitial" class="col-md-2 control-label"><span style="...">State</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="stateinitial" name="stateinitial" th:field="*{stateinitial}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip" class="col-md-2 control-label"><span style="...">Zip</span></label>
+                                <div class="col-md-10">
+                                    <input type="zip" class="form-control" id="zip" name="zip" th:field="*{zip}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber" class="col-md-2 control-label"><span style="...">Phone Number</span></label>
+                                <div class="col-md-10">
+                                    <input type="text" class="bfn-phone form-control" data-format=" (ddd) ddd-dddd" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-2 col-md-10">
+                                <p style="...">
+                                    <button type="submit" name="createBtn" class="btn btn-primary" id="create" th:attr="value=#{create.client}"><i class="icon-ok icon-white"></i>Create Client</button>
+                                    <a class="btn" href="/inventory/client"><i class="icon-remove"></i>Cancel</a>
+                                </p>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- javascript on the bottom of the page to load faster -->
+        <div th:include="main :: scripts">
+            <script src="../../resources/js/jquery-1.10.1.min.js" th:src="@{http://code.jquery.com/jquery-1.10.1.min.js}"></script>
+            <script src="../../resources/js/jquery-migrate-1.2.1.min.js" th:src="@{http://code.jquery.com/jquery-migrate-1.2.1.min.js}"></script>
+            <script src="../../resources/js/bootstrap.min.js" th:src="@{http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js}"></script>
+            <script src="../../resources/js/main.js" th:src="@{/resources/js/main.js}"></script>
+        </div>
+        <!-- script for the javascript that does the phone number formatting -->
+        <script src="../../resources/js/bootstrap-formhelpers.js" th:src="@{/resources/js/bootstrap-formhelpers.js}"></script>
+
+        <!-- minor script to have the field 'company' pre-selected when the page loads -->
+        <script>
+            $(function() {
+                $('input#company').focus();
+            });
+        </script>
+    </body>
 </html>
