@@ -4,7 +4,20 @@
     <!-- header info and metadata -->
     <head th:include="/main :: head(#{invoice.label})">
         <meta charset="UTF-8">
-        <title>Title</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title th:text="|${title} - #{project.name.label}|">Edit</title>
+        <meta name="description" content=""/>
+        <meta name="author" content="Erland Green"/>
+
+        <!-- phone compatibility -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="../../resources/img/favicon.ico" th:href="@{/resources/img/favicon.ico}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="../../resources/img/apple-touch-icon-precomposed.png" th:href="@{/resources/img/apple-touch-icon-precomposed.png}" />
+
+        <!-- css files -->
+        <link rel="stylesheet" href="../../resources/css/bootstrap.no-icons.min.css" th:href="@{//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/font-awesome.min.css" th:href="@{//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css}" />
+        <link rel="stylesheet" href="../../resources/css/main.css" th:href="@{/resources/css/main.css}" />
     </head>
     <body>
 
