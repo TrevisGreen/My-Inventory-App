@@ -19,6 +19,42 @@
     <link rel="stylesheet" href="../../resources/css/main.css" th:href="@{/resources/css/main.css}" />
   </head>
   <body>
+    <!-- navigation bar -->
+    <header class="navbar navbar-inverse navbar-fixed-top" role="banner" th:substituteby="/main :: navigation('invoice')">
+    </header>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 style="..."> Editing</h1>
+          <!-- if a mistake, this form will change the client of the invoice -->
+          <form action="#" th:action="@{/invoice/update}" th:object="${invoice}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <fieldset>
+              <div style="...">
+                <label for="client"><span style="...">Client</span></label>
+                </br>
+                <select th:field="*{client.id}" id="client">
+                  <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.company}">Client</option>
+                </select>
+                </br>
+              </div>
+              <p class="well" style="...">
+                <button type="submit" name="createBtn" class="btn btn-primary" id="create" th:attr="value=#{invoice.list.update}"><i class="icon-ok icon-white"></i>Update</button>
+                <a class="btn" href="#" th:href="@{'/invoice/see/'+${invoice.id}+'/'}"><i class="icon-remove"></i>Cancel</a>
+              </p>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- javascript on the bottom of the page to load faster -->
+    <div th:include="main :: scripts">
+      <script src="../../resources/js/jquery-1.10.1.min.js" th:src="@{http://code.jquery.com/jquery-1.10.1.min.js}"></script>
+      <script src="../../resources/js/jquery-migrate-1.2.1.min.js" th:src="@{http://code.jquery.com/jquery-migrate-1.2.1.min.js}"></script>
+      <script src="../../resources/js/bootstrap.min.js" th:src="@{http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js}"></script>
+      <script src="../../resources/js/main.js" th:src="@{/resources/js/main.js}"></script>
+    </div>
   </body>
 </html>
