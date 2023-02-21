@@ -40,7 +40,7 @@ public class BootStrap implements ApplicationListener<ContextRefreshedEvent> {
 
         Role userRole = roleRepository.findOne("ROLE_USER");
         if (userRole == null) {
-            userRole = new Role("ROLE_USER");
+            userRole = new Role("ROLE_ADMIN");
             userRole = roleRepository.save(userRole);
         }
 

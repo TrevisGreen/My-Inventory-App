@@ -46,7 +46,7 @@ public class UserController {
             return "admin/user/newUser";
         }
         log.debug("{}", user);
-        user = userRepository.save(user);
+        user.userRepository.save(user);
 
         redirectAttributes.addFlashAttribute("message", "The User " + user.getFullName() + " has been created");
 
