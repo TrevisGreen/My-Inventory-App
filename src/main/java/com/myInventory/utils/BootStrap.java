@@ -1,5 +1,7 @@
 package com.myInventory.utils;
 
+import com.myInventory.dao.RoleRepository;
+import com.myInventory.dao.UserRepository;
 import com.myInventory.model.Role;
 import com.myInventory.model.User;
 import org.slf4j.Logger;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class BootStrap implements ApplicationListener<ContextRefreshedEvent> {
 
     // declaration of 'log' for debugging purposes
-    private static final Logger log = LoggerFactory.getLogger(BootStrap);
+    private static final Logger log = LoggerFactory.getLogger(BootStrap.class);
 
     // Declarations of the userRepository class and the passwordEncoder
     @Autowired
@@ -30,7 +32,7 @@ public class BootStrap implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("Validating Roles");
-        Role adminRole = roleRepository.findOne("ROLE_ADMIN");
+        Role adminRole = roleRepository.findOne("Role_Admin");
         if (adminRole == null) {
             adminRole = new Role("ROLE_ADMIN");
             adminRole = roleRepository.save(adminRole);
@@ -43,7 +45,7 @@ public class BootStrap implements ApplicationListener<ContextRefreshedEvent> {
         }
 
         log.info("Validating Users");
-        User admin = userRepository.findOne("admin@kinetic.com");
+        User admin = userRepository.findOne("admin@My_Invertory.com");
         if (admin == null) {
             String password = passwordEncoder.encode("admin");
             admin = new User("admin@kinetic.com", password, "Admin", "User");
