@@ -1,4 +1,8 @@
 package com.myInventory.dao;
 
-public class ClientRepository {
+import com.myInventory.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
 }
