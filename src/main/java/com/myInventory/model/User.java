@@ -123,10 +123,12 @@ public class User implements Serializable, UserDetails {
         this.roles = roles;
     }
 
+    // The roles to add
     public void addRole(Role role) {
         this.roles.add(role);
     }
 
+    // Method which returns the roles attributed to a user
     @Override
     public Collections<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
