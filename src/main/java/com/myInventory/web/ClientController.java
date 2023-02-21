@@ -25,7 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ClientController {
 
     // declaration of 'log' for debugging purposes
-    private static final Logger log = LoggerFactory.getLogger(ProductsController.class);
+    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 
     // Connect to the clientRepository class to use the object 'client'
     @Autowired
