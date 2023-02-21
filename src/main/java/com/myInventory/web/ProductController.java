@@ -29,7 +29,7 @@ public class ProductController {
     private ProductRepository productRepository;
 
     // Method that takes us to the directory of the products list
-    @RequestMapping(value = "", "/list")
+    @RequestMapping(value = {"", "/list"})
     public String list(Model model) {
         model.addAttribute("list", productRepository.findAll());
         return "/products/list";
