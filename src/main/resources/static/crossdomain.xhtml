@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+    <!-- Read this: www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html -->
 
-</body>
-</html>
+    <!-- Most restrictive policy: -->
+    <site-control permitted-cross-domain-policies="none"/>
+
+    <!-- Least restrictive policy: -->
+    <!--
+    <site-control permitted-cross-domain-policies="all"/>
+    <allow-access-from domain="*" to-ports="*" secure="false"/>
+    <allow-http-request-headers-from domain="*" headers="*" secure="false"/>
+    -->
+</cross-domain-policy>
