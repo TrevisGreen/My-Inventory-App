@@ -2,11 +2,11 @@ package com.myInventory.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 // Defines table with the name 'users'
@@ -122,4 +122,61 @@ public class User implements Serializable, UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-})
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    @Override
+    public Collections<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
+        authorities.addAll(roles);
+        return authorities;
+    }
+
+    // Method dto return if account is expired or not
+    @Override
+    public boolean isAccountNonExpired() {
+        return !accountExpired;
+    }
+
+    // Method to return if account is temporarily locked
+    @Override
+    public boolean isAccountNonLocked() {
+        return !accountLocked;
+    }
+
+    // Method to return if credentials are no longer valid
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return !credentialsExpired;
+    }
+
+    // Method to show if account is enabled
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    // Method to return firstName concatenated with lastName as a string
+    public String getFullName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(firstName);
+        sb.append(" ");
+        sb.append(lastName);
+        return sb.toString();
+    }
+
+    // Method to return the hash of the username
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + Objects.hashCode(this.username);
+    }
+
+    // Return username/email and full name
+    @Override
+    public String toString() {
+        return "User{username=" + username + ", firstName=" + firstName + ", lastName=" + lastName +"}";
+    }
+}
