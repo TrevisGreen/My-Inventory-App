@@ -1,5 +1,7 @@
 package com.myInventory.utils;
 
+import com.myInventory.model.Role;
+import com.myInventory.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class BootStrap implements ApplicationListener<ContextRefreshedEvent> {
 
     // declaration of 'log' for debugging purposes
-    private static final Logger log = LoggerFactory.getLogger(Bootstrap.class);
+    private static final Logger log = LoggerFactory.getLogger(BootStrap);
 
     // Declarations of the userRepository class and the passwordEncoder
     @Autowired
