@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="86ba9882-cf1e-4491-9c58-2a10b9aeb115" name="PostgreSQL 13" url="jdbc:postgresql://localhost/My_Inventory" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
