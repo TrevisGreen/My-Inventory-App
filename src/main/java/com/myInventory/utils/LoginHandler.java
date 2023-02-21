@@ -1,6 +1,7 @@
 package com.myInventory.utils;
 
 
+import com.myInventory.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,7 +29,7 @@ public class LoginHandler extends SavedRequestAwareAuthenticationSuccessHandler 
         super.onAuthenticationSuccess(request,response,authentication);
         User user =(User) authentication.getPrincipal();
         log.debug("{} has logged in", user.getUsername());
-        log.debug("{}",user.getFullName);
+        log.debug("{}",user.getFullName());
         request.getSession().setAttribute(Constants.LOGGED_USER, user.getFullName());
     }
 }
