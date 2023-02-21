@@ -130,11 +130,12 @@ public class User implements Serializable, UserDetails {
 
     // Method which returns the roles attributed to a user
     @Override
-    public Collections<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         authorities.addAll(roles);
         return authorities;
     }
+
 
 
     // Method dto return if account is expired or not
