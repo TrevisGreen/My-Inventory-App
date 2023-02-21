@@ -1,6 +1,7 @@
 package com.myInventory.web;
 
 
+import com.myInventory.dao.ClientRepository;
 import com.myInventory.model.Client;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
