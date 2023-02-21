@@ -134,6 +134,7 @@ public class User implements Serializable, UserDetails {
         return authorities;
     }
 
+
     // Method dto return if account is expired or not
     @Override
     public boolean isAccountNonExpired() {
@@ -172,6 +173,20 @@ public class User implements Serializable, UserDetails {
     public int hashCode() {
         int hash = 7;
         hash = 11 * hash + Objects.hashCode(this.username);
+        return hash;
+    }
+
+    // Returns true of false if usernames match
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) {
+            return false;
+        }
+        if(getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        return Objects.equals(this.username, other.username);
     }
 
     // Return username/email and full name
