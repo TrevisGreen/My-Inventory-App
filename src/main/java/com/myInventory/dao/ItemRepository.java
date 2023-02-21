@@ -1,4 +1,8 @@
 package com.myInventory.dao;
 
-public interface ItemRepository {
+import com.myInventory.model.Item;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
 }
