@@ -75,7 +75,7 @@ public class InvoiceController {
         invoice.setClient(clientRepository.getOne(invoice.getClient().getId()));
         invoice.setDateCreated(new Date());
         invoice = invoiceRepository.save(invoice);
-        redirectAttributes.addFlashAttribute(("message", "The Invoice ", invoice.getId() + " has been created");
+        redirectAttributes.addFlashAttribute("message", "The Invoice " + invoice.getId() + " has been created");
         return "redirect:/invoice/see/" + invoice.getId() + "/";
     }
 
@@ -128,7 +128,7 @@ public class InvoiceController {
         item.setInvoice(invoiceRepository.getOne(item.getInvoice().getId()));
         item.setProduct(productRepository.getOne(item.getProduct().getId()));
         item = itemRepository.save(item);
-        redirectAttributes.addFlashAttribute("message", "The Item " item.getId() + " has been created");
+        redirectAttributes.addFlashAttribute("message", "The Item " + item.getId() + " has been created");
         return "redirect:/invoice/see/" + item.getInvoice().getId() + "/";
     }
 }
